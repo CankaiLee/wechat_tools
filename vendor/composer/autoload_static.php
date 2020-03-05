@@ -14,6 +14,18 @@ class ComposerStaticInit202e9f57dfbbe3b16412769c661b44f7
     );
 
     public static $prefixLengthsPsr4 = array (
+        'w' => 
+        array (
+            'weixin\\' => 7,
+        ),
+        'l' => 
+        array (
+            'libraries\\' => 10,
+        ),
+        'e' => 
+        array (
+            'entities\\' => 9,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
@@ -27,6 +39,18 @@ class ComposerStaticInit202e9f57dfbbe3b16412769c661b44f7
     );
 
     public static $prefixDirsPsr4 = array (
+        'weixin\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'libraries\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/libraries',
+        ),
+        'entities\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/entities',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',

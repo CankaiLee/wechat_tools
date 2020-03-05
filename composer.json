@@ -1,5 +1,7 @@
 {
-    "name": "cota/wechat_tools",
+    "name": "cankai/wechat_tools",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "licankai",
@@ -12,9 +14,9 @@
     },
     "autoload": {
         "psr-4": {
-            "entities": "entities/",
-            "libraries": "libraries/",
-            "weixin": "src/"
+            "entities\\": "entities/",
+            "libraries\\": "libraries/",
+            "weixin\\": "src/"
         }
     }
 }
