@@ -1,0 +1,20 @@
+{
+    "name": "cota/wechat_tools",
+    "authors": [
+        {
+            "name": "licankai",
+            "email": "13144429534@163.com"
+        }
+    ],
+    "require": {
+        "php" : ">=5.5.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "entities": "entities/",
+            "libraries": "libraries/",
+            "weixin": "src/"
+        }
+    }
+}
