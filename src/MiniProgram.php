@@ -6,10 +6,11 @@
  * Time: 11:25
  */
 
-namespace weixin;
+namespace WormOfTime\WechatTools\weixin;
 
-use entities\SessionEntity;
-use entities\WxUserInfoEntity;
+use WormOfTime\WechatTools\entities\SessionEntity;
+use WormOfTime\WechatTools\entities\WxUserInfoEntity;
+use WormOfTime\WechatTools\libraries\WXBizDataCrypt;
 
 /**
  * 小程序
@@ -92,7 +93,7 @@ class MiniProgram extends Wechat
                 return false;
             }
 
-            $pc = new \libraries\WXBizDataCrypt($this->getAppId(), $session_key);
+            $pc = new WXBizDataCrypt($this->getAppId(), $session_key);
             $decrypt_data = '';
             $errCode = $pc->decryptData($encrypted_data, $iv, $decrypt_data);
 

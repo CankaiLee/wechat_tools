@@ -6,10 +6,10 @@
  * Time: 11:17
  */
 
-namespace weixin;
+namespace WormOfTime\WechatTools\weixin;
 
-use entities\UserInfoResultEntity;
-use entities\OauthAccessTokenResultEntity;
+use WormOfTime\WechatTools\entities\UserInfoResultEntity;
+use WormOfTime\WechatTools\entities\OauthAccessTokenResultEntity;
 
 /**
  * 公众号

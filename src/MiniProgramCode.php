@@ -1,6 +1,6 @@
 <?php
 
-namespace weixin;
+namespace WormOfTime\WechatTools\weixin;
 
 /**
  * Class MiniProgramCode

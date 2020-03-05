@@ -6,7 +6,7 @@
  * Time: 11:50
  */
 
-namespace entities;
+namespace WormOfTime\WechatTools\entities;
 
 
 class SessionEntity

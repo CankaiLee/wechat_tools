@@ -14,17 +14,11 @@ class ComposerStaticInit202e9f57dfbbe3b16412769c661b44f7
     );
 
     public static $prefixLengthsPsr4 = array (
-        'w' => 
+        'W' => 
         array (
-            'weixin\\' => 7,
-        ),
-        'l' => 
-        array (
-            'libraries\\' => 10,
-        ),
-        'e' => 
-        array (
-            'entities\\' => 9,
+            'WormOfTime\\WechatTools\\weixin\\' => 30,
+            'WormOfTime\\WechatTools\\libraries\\' => 33,
+            'WormOfTime\\WechatTools\\entities\\' => 32,
         ),
         'P' => 
         array (
@@ -39,15 +33,15 @@ class ComposerStaticInit202e9f57dfbbe3b16412769c661b44f7
     );
 
     public static $prefixDirsPsr4 = array (
-        'weixin\\' => 
+        'WormOfTime\\WechatTools\\weixin\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'libraries\\' => 
+        'WormOfTime\\WechatTools\\libraries\\' => 
         array (
             0 => __DIR__ . '/../..' . '/libraries',
         ),
-        'entities\\' => 
+        'WormOfTime\\WechatTools\\entities\\' => 
         array (
             0 => __DIR__ . '/../..' . '/entities',
         ),

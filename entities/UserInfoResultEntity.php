@@ -6,7 +6,7 @@
  * Time: 11:08
  */
 
-namespace entities;
+namespace WormOfTime\WechatTools\entities;
 
 
 class UserInfoResultEntity

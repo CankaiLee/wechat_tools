@@ -1,9 +1,9 @@
 <?php
 
-namespace weixin;
+namespace WormOfTime\WechatTools\weixin;
 
 use GuzzleHttp\Client;
-use entities\OauthAccessTokenResultEntity;
+use WormOfTime\WechatTools\entities\OauthAccessTokenResultEntity;
 
 /**
  * 微信基类
@@ -262,19 +262,24 @@ class Wechat
      */
     public function get_access_token()
     {
-        $uri = "/cgi-bin/token?grant_type=client_credential";
+        $uri = "/cgi-bin/token";
 
-        $json_string = $this->getHttpClient()->get($uri, array(
+        $response = $this->getHttpClient()->get($uri, array(
             'query' => [
+                'grant_type' => 'client_credential',
                 'appid' => $this->getAppId(),
                 'secret' => $this->getAppSecret()
             ],
             'timeout' => 3.0
         ));
-        $result = \GuzzleHttp\json_decode($json_string, true);
 
-        if (isset($result['access_token'])) {
-            return $result['access_token'];
+        if ($response->getStatusCode() == 200) {
+            $json_string = $response->getBody()->getContents();
+            $result = \GuzzleHttp\json_decode($json_string, true);
+
+            if (isset($result['access_token'])) {
+                return $result['access_token'];
+            }
         }
 
         $this->err_code = 500;

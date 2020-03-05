@@ -6,7 +6,7 @@
  * Time: 11:01
  */
 
-namespace entities;
+namespace WormOfTime\WechatTools\entities;
 
 
 class OauthAccessTokenResultEntity

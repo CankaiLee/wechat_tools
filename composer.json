@@ -1,5 +1,6 @@
 {
     "name": "worm_of_time/wechat_tools",
+    "description": "wechat tools",
     "version": "1.0.1",
     "type": "library",
     "license": "MIT",
@@ -15,9 +16,9 @@
     },
     "autoload": {
         "psr-4": {
-            "entities\\": "entities/",
-            "libraries\\": "libraries/",
-            "weixin\\": "src/"
+            "WormOfTime\\WechatTools\\entities\\": "entities/",
+            "WormOfTime\\WechatTools\\libraries\\": "libraries/",
+            "WormOfTime\\WechatTools\\weixin\\": "src/"
         }
     }
 }
