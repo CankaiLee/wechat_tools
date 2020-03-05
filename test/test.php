@@ -6,8 +6,8 @@ use WormOfTime\WechatTools\weixin\MiniProgram;
 
 $wechat = new MiniProgram;
 
-$wechat->setAppId('wxc081988305e3d1a0')
-    ->setAppSecret('c3fbab33f6b4aa528d3e610fafe3734b');
+$wechat->setAppId('app_id')
+    ->setAppSecret('app_secret');
 
 $result = $wechat->msgSecCheck("你个");
 if ($result === false) {
