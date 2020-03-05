@@ -31,7 +31,7 @@ class Wechat
         if (is_null($this->http_client)) {
             $this->http_client = new Client([
                 'base_uri' => 'https://api.weixin.qq.com/',
-                'timeout'  => 2.0,
+                'timeout'  => 5.0,
             ]);
         }
 
@@ -184,7 +184,7 @@ class Wechat
             $uri = "/wxa/media_check_async?access_token=" . $access_token;
 
             $response = $this->getHttpClient()->post($uri, array(
-                'form_params' => [
+                'json' => [
                     'media_url' => $media_url,
                     'media_type' => $media_type
                 ]
@@ -229,7 +229,7 @@ class Wechat
             $uri = "/wxa/msg_sec_check?access_token=" . $access_token;
 
             $response = $this->getHttpClient()->post($uri, array(
-                'form_params' => [
+                'json' => [
                     'content' => $content
                 ]
             ));
