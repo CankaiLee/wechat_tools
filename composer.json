@@ -1,7 +1,7 @@
 {
     "name": "worm_of_time/wechat_tools",
     "description": "wechat tools",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "library",
     "license": "MIT",
     "authors": [
