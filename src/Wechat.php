@@ -3,6 +3,7 @@
 namespace WormOfTime\WechatTools\weixin;
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 use WormOfTime\WechatTools\entities\OauthAccessTokenResultEntity;
 
 /**
@@ -13,6 +14,10 @@ use WormOfTime\WechatTools\entities\OauthAccessTokenResultEntity;
  */
 class Wechat
 {
+    const RETURN_STRING = 1;
+    const RETURN_ARRAY = 2;
+    const RETURN_BOOL = 3;
+
     protected $err_code = 0;
 
     protected $err_msg = '';
@@ -342,6 +347,40 @@ class Wechat
             case 'encrypt': // todo: remove in 3.1+
             case 'sha1':
                 return sha1(uniqid(mt_rand(), TRUE));
+        }
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @param $return_type
+     * @return mixed|array|bool
+     */
+    protected function decodeResponse($response, $return_type = self::RETURN_ARRAY)
+    {
+        if ($response->getStatusCode() == 200) {
+            $json_string = $response->getBody()->getContents();
+            $json_array = \GuzzleHttp\json_decode($json_string, true);
+            if (!$json_array || $json_array['errcode'] > 0) {
+                $this->err_code = $this->element('errcode', $json_array);
+                $this->err_msg = $this->element('errmsg', $json_array);
+                return false;
+            }
+            switch ($return_type) {
+                case self::RETURN_STRING:
+                    return $json_string;
+                case self::RETURN_ARRAY:
+                    return $json_array;
+                case self::RETURN_BOOL:
+                    return true;
+                default:
+                    $this->err_code = 40004;
+                    $this->err_msg = '返回类型错误';
+                    return false;
+            }
+        } else {
+            $this->err_code = 40002;
+            $this->err_msg = '访问接口出错';
+            return false;
         }
     }
 }
