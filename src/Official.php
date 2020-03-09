@@ -127,14 +127,19 @@ class Official extends Wechat
     }
 
     /**
-     * @param string $access_token
      * @param string $openid
      * @return UserInfoResultEntity|bool
      * @throws \Exception
      */
-    public function getOauthUserInfo($access_token,$openid)
+    public function getOauthUserInfo($openid)
     {
         try {
+            $access_token = $this->get_access_token();
+
+            if ($access_token === false) {
+                return false;
+            }
+
             $uri = 'sns/userinfo';
 
             $response = $this->getHttpClient()->get($uri,array(

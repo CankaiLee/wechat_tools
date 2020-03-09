@@ -5,6 +5,7 @@ namespace WormOfTime\WechatTools\weixin;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 use WormOfTime\WechatTools\entities\OauthAccessTokenResultEntity;
+use WormOfTime\WechatTools\entities\UserInfoResultEntity;
 
 /**
  * 微信基类
@@ -290,6 +291,48 @@ class Wechat
         $this->err_code = 500;
         $this->err_msg = '获取access_token失败';
         return false;
+    }
+
+    /**
+     * @param $openid
+     * @return bool|UserInfoResultEntity
+     */
+    public function getWXUserInfo($openid)
+    {
+        try {
+            $access_token = $this->get_access_token();
+            if (! $access_token) return false;
+
+            $uri = '/cgi-bin/user/info';
+
+            $response = $this->getHttpClient()->get($uri, array(
+                'query' => [
+                    'access_token' => $access_token,
+                    'openid' => $openid,
+                    'lang' => 'zh_CN'
+                ]
+            ));
+
+            $result = $this->decodeResponse($response, self::RETURN_ARRAY);
+            if (! $result) return false;
+
+            $userInfoEntity = new UserInfoResultEntity();
+            $userInfoEntity->setOpenid($openid)
+                ->setNickname($result['nickname'])
+                ->setUnionid($result['unionid'])
+                ->setCountry($result['country'])
+                ->setProvince($result['province'])
+                ->setCity($result['city'])
+                ->setSex($result['sex'])
+                ->setHeadimgurl($result['headimgurl'])
+                ->setPrivilege(\GuzzleHttp\json_decode($this->element('privilege',$result)));
+
+            return $userInfoEntity;
+        } catch (\Exception $exception) {
+            $this->err_code = $exception->getCode();
+            $this->err_msg = $exception->getMessage();
+            return false;
+        }
     }
 
     /**
